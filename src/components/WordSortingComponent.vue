@@ -1,14 +1,27 @@
 <template>
-  <div class="words__single">
-    <div class="words__single__name">{{props.word.name}}</div>
-    <p class="words__single__description"> - {{props.word.description}}</p>
-  </div>
+  <Dropdown v-model="sort" :options="sortParams" :loading="sortStatus" @change="selectSort" optionLabel="name" placeholder="Відсортувати" />
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  'word': Object
-})
+import {ref} from "vue";
+import Dropdown from 'primevue/dropdown';
+
+const emit = defineEmits(['setSort'])
+
+
+let sort = ref<number>(5);
+const sortParams = [
+  {name: 'Сортування на ім\'я А-Я', value: 1},
+  {name: 'Сортування на ім\'я Я-А', value: 2},
+  {name: 'Найновіші', value: 3},
+  {name: 'Найстаріші', value: 4},
+  {name: 'Найпопулярніші', value: 5}
+];
+const sortStatus = false;
+
+function selectSort() {
+  emit('setSort', sort)
+}
 
 
 </script>

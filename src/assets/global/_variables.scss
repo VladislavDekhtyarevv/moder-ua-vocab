@@ -1,6 +1,6 @@
 
 // Typography
-$font-family: "Inter", sans-serif;
+$font-family: "TitilliumWeb", sans-serif;
 
 $font-size-h1: 32px;
 $line-height-h1: 150% !important;
@@ -39,16 +39,16 @@ $font-weight-small-text: 400;
 //font-weight :$font-weight-button-text;
 
 // Colors
-$colorDarkGray: #202020;
-$colorGray: #323232;
+$colorBlue: rgba(0, 87, 184, 1);
+$colorBlockBlue: #001934;
+$colorDarkGreen: #7C946C;
+$colorDarkBlue: #1C5C7C;
 $colorDarkWhite: #FBFBFB;
-$colorBorderGray: #D9D9D9;
-//$colorDisabled: #e0e0e0;
-//$colorBlack: #000000;
+$colorBlack: #000000;
 $colorWhite: #ffffff;
-$colorGreen: #9ACA52;
 $colorRed: #E74141;
+$colorGreen: #38c301;
 $colorGreenGradient: linear-gradient(to right, #86C22B 0%, #B3E36A 51%, #86C22B 100%);
-$colorYellow: #cbc938;
+$colorYellow: rgba(255, 213, 0, 1);
 $colorTransparent: rgba(0, 0, 0, 0);
 

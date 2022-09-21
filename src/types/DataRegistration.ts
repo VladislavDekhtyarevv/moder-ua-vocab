@@ -1,8 +1,7 @@
-interface Word {
-    name: string,
-    description: string,
-    likes: number,
-    id: number
+interface DataRegistration {
+    name: string | null,
+    email: string | null,
+    password: string | null,
 }
 
-export default Word;
+export default DataRegistration;

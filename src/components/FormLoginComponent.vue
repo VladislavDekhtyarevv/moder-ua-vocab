@@ -1,21 +1,15 @@
 <template>
   <div class="wrapper-form">
     <div class="field">
-      <InputText type="text" v-model="name" :class="validations && validations['name'] ? 'p-invalid' : ''"/>
-      <small v-if="validations && validations['name']" class="p-error">{{validations && validations['name'] ? validations['name'][0] : ''}}</small>
-    </div>
-
-
-    <div class="field">
-      <InputText type="email" v-model="email" :class="validations && validations['email'] ? 'p-invalid' : ''"/>
+      <InputText type="email" v-model="email" placeholder="Пошта" :class="validations && validations['email'] ? 'p-invalid' : ''"/>
       <small v-if="validations && validations['email']" class="p-error">{{validations && validations['email'] ? validations['email'][0] : ''}}</small>
     </div>
 
     <div class="field">
-      <Password v-model="password"  :class="validations && validations['password'] ? 'p-invalid' : ''"/>
+      <Password v-model="password" placeholder="Пароль"  :class="validations && validations['password'] ? 'p-invalid' : ''"/>
       <small v-if="validations && validations['password']" class="p-error">{{validations && validations['password'] ? validations['password'][0] : ''}}</small>
     </div>
-    <Button label="Зареєструватись" @click="registration"/>
+    <Button label="Увійти" @click="login"/>
   </div>
 </template>
 
@@ -29,19 +23,18 @@ import { useStore } from 'vuex'
 
 const store = useStore()
 
-let name = ref<string | null>(null);
 let password = ref<string | null>(null);
 let email = ref<string | null>(null);
 
 let validations = ref<object | null>(null);
 const router = useRouter()
 
-function registration () {
+function login () {
   let data = {
-    name:name.value, password:password.value, email:email.value
+    password:password.value, email:email.value
   }
   validations.value = null;
-  store.dispatch('registration', data).then((response) => {
+  store.dispatch('login', data).then((response) => {
         router.push({
           name: 'profile',
         })

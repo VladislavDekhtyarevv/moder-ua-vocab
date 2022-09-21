@@ -1,18 +1,18 @@
 <template>
   <div class="wrapper-form">
     <div class="field">
-      <InputText type="text" v-model="name" :class="validations && validations['name'] ? 'p-invalid' : ''"/>
+      <InputText type="text" v-model="name" placeholder="Ім'я" :class="validations && validations['name'] ? 'p-invalid' : ''"/>
       <small v-if="validations && validations['name']" class="p-error">{{validations && validations['name'] ? validations['name'][0] : ''}}</small>
     </div>
 
 
     <div class="field">
-      <InputText type="email" v-model="email" :class="validations && validations['email'] ? 'p-invalid' : ''"/>
+      <InputText type="email" placeholder="Пошта" v-model="email" :class="validations && validations['email'] ? 'p-invalid' : ''"/>
       <small v-if="validations && validations['email']" class="p-error">{{validations && validations['email'] ? validations['email'][0] : ''}}</small>
     </div>
 
     <div class="field">
-      <Password v-model="password"  :class="validations && validations['password'] ? 'p-invalid' : ''"/>
+      <Password v-model="password" placeholder="Пароль"  :class="validations && validations['password'] ? 'p-invalid' : ''"/>
       <small v-if="validations && validations['password']" class="p-error">{{validations && validations['password'] ? validations['password'][0] : ''}}</small>
     </div>
     <Button label="Зареєструватись" @click="registration"/>
@@ -26,6 +26,7 @@ import Password from 'primevue/password';
 import Button from 'primevue/button';
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from 'vuex'
+import DataRegistration from "@/types/DataRegistration";
 
 const store = useStore()
 
@@ -37,11 +38,11 @@ let validations = ref<object | null>(null);
 const router = useRouter()
 
 function registration () {
-  let data = {
+  let data = ref<DataRegistration>({
     name:name.value, password:password.value, email:email.value
-  }
+  })
   validations.value = null;
-  store.dispatch('registration', data).then((response) => {
+  store.dispatch('registration', data.value).then((response) => {
         router.push({
           name: 'profile',
         })

@@ -1,25 +1,21 @@
 @import '../global/variables';
 @import '../mixins/mixins';
 
-.header {
-  width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
-  box-shadow: 0px 1px 10px $colorBlue;
-  position: fixed;
-  top: 0px;
-  z-index: 1;
-  left: 0px;
-  background-color: $colorBlack;
+.sidebar {
+  width: 230px;
+  min-width: 230px;
+  background-color: $colorBlockBlue;
+  position: relative;
+  margin-top: -2rem;
   &__container {
-    @include flex-horizontal-between;
-    max-width: 1366px;
-    width: 100%;
-  }
-  &__logo {
-    color: $colorYellow;
+    @include flex-column;
+    position: fixed;
+    left: 0;
+    top: 8rem;
+    padding: 0 1rem;
+    width: 230px;
   }
   &__item {
-    margin-left: 1rem;
+    margin-bottom: 1rem;
   }
 }

@@ -1,43 +1,46 @@
 <template>
   <div class="wrapper-form">
     <div class="field">
-      <InputText type="email" v-model="email" :class="validations && validations['email'] ? 'p-invalid' : ''"/>
-      <small v-if="validations && validations['email']" class="p-error">{{validations && validations['email'] ? validations['email'][0] : ''}}</small>
+      <InputText v-model="name" placeholder="Слово" :class="validations && validations['name'] ? 'p-invalid' : ''"/>
+      <small v-if="validations && validations['name']" class="p-error">{{validations && validations['name'] ? validations['name'][0] : ''}}</small>
+    </div>
+    <div class="field">
+      <Textarea v-model="description" placeholder="Тлумачення" :autoResize="true" rows="5" cols="30" :class="validations && validations['description'] ? 'p-invalid' : ''"/>
+      <small v-if="validations && validations['description']" class="p-error">{{validations && validations['description'] ? validations['description'][0] : ''}}</small>
     </div>
 
-    <div class="field">
-      <Password v-model="password"  :class="validations && validations['password'] ? 'p-invalid' : ''"/>
-      <small v-if="validations && validations['password']" class="p-error">{{validations && validations['password'] ? validations['password'][0] : ''}}</small>
-    </div>
-    <Button label="Увійти" @click="login"/>
+    <Button label="Створити" @click="createWord"/>
   </div>
 </template>
 
 <script setup lang="ts">
 import {ref} from "vue";
 import InputText from 'primevue/inputtext';
-import Password from 'primevue/password';
+import Textarea from 'primevue/textarea';
 import Button from 'primevue/button';
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 
 const store = useStore()
 
-let password = ref<string | null>(null);
-let email = ref<string | null>(null);
+let name = ref<string | null>(null);
+let description = ref<string | null>(null);
 
 let validations = ref<object | null>(null);
 const router = useRouter()
 
-function login () {
+function createWord () {
   let data = {
-    password:password.value, email:email.value
+    name:name.value, description:description.value
   }
   validations.value = null;
-  store.dispatch('login', data).then((response) => {
-        router.push({
-          name: 'profile',
-        })
+  store.dispatch('createWord', data).then((response) => {
+        console.log(response)
+
+        //пуш на просмотр этого слова
+        // router.push({
+        //   name: 'profile',
+        // })
   },
   ({errors}: any) => {
     validations.value = errors;

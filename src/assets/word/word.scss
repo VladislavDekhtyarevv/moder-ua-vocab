@@ -1,24 +1,78 @@
 @import '../global/variables';
 @import '../mixins/mixins';
 
-.header {
+.header-words {
+  @include flex-horizontal-between;
+  margin: 2rem auto;
   width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
-  box-shadow: 0px 1px 10px $colorBlue;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  background-color: $colorBlack;
-  &__container {
-    @include flex-horizontal-between;
-    max-width: 1366px;
+  max-width: 600px;
+  &__sort {
+    width: 49%;
+    .p-inputtext {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+.words {
+  @include flex-column;
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 600px;
+  &__single {
     width: 100%;
-  }
-  &__logo {
-    color: $colorYellow;
-  }
-  &__item {
-    margin-left: 1rem;
+    margin-bottom: 2rem;
+    border: 2px solid $colorBlue;
+    border-radius: 5px;
+    padding: 1rem 2rem;
+    border-bottom-color: $colorYellow;
+    border-right-color: $colorYellow;
+    &__reaction {
+      @include flex-vertical-center;
+      cursor: pointer;
+      margin: 0 5px;
+      svg {
+        width:20px;
+      }
+      &.dislike {
+        svg {
+          margin-left: 4px;
+          transform: rotate(180deg);
+        }
+        span {
+          color: $colorRed
+        }
+        &.has {
+          svg {
+            fill: $colorRed;
+          }
+        }
+      }
+      &.like {
+        svg {
+          margin-right: 4px;
+        }
+        span {
+          color: $colorGreen;
+        }
+        &.has {
+          svg {
+            fill: $colorGreen;
+          }
+        }
+      }
+    }
+    .p-buttonset {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: flex-end;
+    }
+    &__name {
+      @include text-h2;
+      margin-bottom: 1rem;
+    }
+    &__description {
+
+    }
   }
 }

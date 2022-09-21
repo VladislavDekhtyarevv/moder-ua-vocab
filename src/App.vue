@@ -1,30 +1,60 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+  <HeaderComponent/>
+  <SideBarComponent v-if="authUser"/>
   <router-view/>
+  <transition name="fade">
+    <Notification
+        v-if="notification.status"
+        :notification="notification"
+    />
+  </transition>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script setup lang="ts">
+  import HeaderComponent from '@/components/HeaderComponent.vue';
+  import SideBarComponent from "@/components/SideBarComponent.vue";
+  import Notification from '@/components/Notification.vue';
+  import {computed, onMounted} from 'vue'
+  import { useStore } from 'vuex'
+  import axios from "axios";
+  import NProgress from 'nprogress';
+  import 'nprogress/nprogress.css'
 
-nav {
-  padding: 30px;
+  const store = useStore()
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+  const authUser = computed(() => {
+    return store.state.user && store.state.user.token;
+  })
+  const notification = computed(() => {
+    return store.state.notification;
+  })
 
-    &.router-link-exact-active {
-      color: #42b983;
+  onMounted(() => {
+    const userInfo = localStorage.getItem('user')
+    if (userInfo) {
+      const userData = JSON.parse(userInfo)
+      store.commit('setUser', userData)
     }
-  }
-}
+    axios.interceptors.request.use(config => {
+      NProgress.start()
+      return config
+    })
+    axios.interceptors.response.use(response => {
+          NProgress.done()
+      return response;
+        },
+        error => {
+          if (error.response && error.response.status === 401) {
+            store.dispatch('logout')
+          }
+          return Promise.reject(error)
+        }
+    )
+  })
+
+
+</script>
+
+<style lang="scss">
+
 </style>

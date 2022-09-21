@@ -1,14 +1,19 @@
 <template>
-  <div class="words__single">
-    <div class="words__single__name">{{props.word.name}}</div>
-    <p class="words__single__description"> - {{props.word.description}}</p>
-  </div>
+  <span class="p-input-icon-left">
+            <i class="pi pi-search" />
+            <InputText type="text" v-model="search" @input="SetSearch" placeholder="Пошук" />
+        </span>
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  'word': Object
-})
+import {ref} from "vue";
+import InputText from 'primevue/inputtext';
+
+const emit = defineEmits(['SetSearch'])
+let search = ref<null | string>(null);
+function SetSearch() {
+  emit('SetSearch', search)
+}
 
 
 </script>

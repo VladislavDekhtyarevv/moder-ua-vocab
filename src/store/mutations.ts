@@ -1,46 +1,28 @@
 import axios from "axios";
 
 export default {
-    setUser(state, userData) {
-        state.user = userData
-        localStorage.setItem('user', JSON.stringify(userData))
-        axios.defaults.headers.common['X-Authorization'] = `Bearer ${userData.token}`
+    setUser(state: any, data: any) {
+        state.user = data;
+        localStorage.setItem('user', JSON.stringify(data))
+        axios.defaults.headers.common['X-Authorization'] = `Bearer ${data.token}`
     },
-    showPreloader(state) {
-        state.preloader.status = true
+    clearUserData (state: any) {
+        state.user = {data: {}, token: null};
+        window.localStorage.clear();
     },
-    hidePreloader(state) {
-        state.preloader.status = false
-    },
-    setProjects(state, data) {
-        console.log(data)
-        state.projects = data
-        localStorage.setItem('projects', JSON.stringify(data))
-    },
-    setProject(state, data) {
-        state.project = data.data
-        localStorage.setItem('project', JSON.stringify(data.data))
-    },
-    setConfiguration(state, data) {
-        state.configuration = data
-        localStorage.setItem('configuration', JSON.stringify(data))
-    },
-    closeNotification(state) {
+    closeNotification(state: any) {
         state.notification = {
             data: state.notification.data
         }
     },
-    showNotification(state, data) {
+    showNotification(state: any, data: any) {
         state.notification = data
         function clearNotification() {
             state.notification = {
                 data: state.notification.data
             }
         }
-        setTimeout(clearNotification, 3000);
+        setTimeout(clearNotification, 2500);
     },
-    clearUserData () {
-        window.localStorage.clear();
-        location.reload()
-    },
+
 }

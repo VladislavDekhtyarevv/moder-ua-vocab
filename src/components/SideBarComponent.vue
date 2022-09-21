@@ -1,16 +1,11 @@
 <template>
-  <header class="header">
-    <div class="header__container">
-      <div class="header__logo">UAVOCAB</div>
-      <div class="header__menu">
-        <router-link class="header__item" to="/">Головна</router-link>
-        <router-link v-if='!authUser' class="header__item"  to="/login">Логін</router-link>
-        <router-link v-if='!authUser'  class="header__item" to="/registration">Регістрація</router-link>
-        <router-link v-if='authUser'  class="header__item" to="/profile">Профіль</router-link>
-        <a href="#" v-if='authUser'  class="header__item" @click="logout">Вийти</a>
-      </div>
+  <aside class="sidebar">
+    <div class="sidebar__container">
+        <router-link class="sidebar__item" to="/">Головна</router-link>
+        <router-link class="sidebar__item" to="/profile">Профіль</router-link>
+        <router-link class="sidebar__item" to="/word/create">Створити слово</router-link>
     </div>
-  </header>
+  </aside>
 </template>
 
 <script setup lang="ts">
@@ -24,16 +19,6 @@ const authUser = computed(() => {
   return store.state.user && store.state.user.token;
 })
 
-function logout () {
-  store.dispatch('logout').then((response) => {
-        router.push({
-          name: 'home',
-        })
-      },
-      ({errors}: any) => {
-        console.log(errors)
-      })
-}
 
 </script>
 
