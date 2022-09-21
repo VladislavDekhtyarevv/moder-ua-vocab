@@ -6,4 +6,9 @@ module.exports = defineConfig({
     //     allowedHosts: 'all',
     //     server: 'https'
     // }
+    pwa: {
+        workboxOptions:{
+            exclude: [/.htaccess/],
+        }
+    }
 })
