@@ -3,6 +3,7 @@ module.exports = defineConfig({
     transpileDependencies: true,
     lintOnSave: false,
     devServer: {
-        allowedHosts: 'all'
+        allowedHosts: 'all',
+        https: true
     }
 })
