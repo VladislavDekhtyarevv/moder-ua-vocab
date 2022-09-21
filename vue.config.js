@@ -4,8 +4,6 @@ module.exports = defineConfig({
     lintOnSave: false,
     devServer: {
         allowedHosts: 'all',
-        server: {
-            type: 'https',
-        },
+        server: 'https'
     }
 })
