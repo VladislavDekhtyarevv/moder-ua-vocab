@@ -39,6 +39,16 @@ export default {
             }
         );
     },
+    getPersonalWords({ commit } : any, params : any) {
+        return EventService.getPersonalWords(params).then(
+            ({ data }: any) => {
+                return data;
+            },
+            (error: any) => {
+                throw error.response.data;
+            }
+        );
+    },
     createWord({ commit } : any, params : any) {
         return EventService.createWord(params).then(
             ({ data }: any) => {

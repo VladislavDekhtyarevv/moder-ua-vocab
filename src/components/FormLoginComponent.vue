@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper-form">
     <div class="field">
-      <InputText type="email" v-model="email" placeholder="Пошта" :class="validations && validations['email'] ? 'p-invalid' : ''"/>
+      <InputText type="email" v-model="email" placeholder="Електронна адреса" :class="validations && validations['email'] ? 'p-invalid' : ''"/>
       <small v-if="validations && validations['email']" class="p-error">{{validations && validations['email'] ? validations['email'][0] : ''}}</small>
     </div>
 
@@ -40,6 +40,11 @@ function login () {
         })
   },
   ({errors}: any) => {
+    for (let [key, value] of Object.entries(errors)) {
+      let text = value.toString().replace("email", "електронна адреса");
+      let text3 = text.toString().replace("password", "пароль");
+      errors[key] = [text3];
+    }
     validations.value = errors;
   })
 }

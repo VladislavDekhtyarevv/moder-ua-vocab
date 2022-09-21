@@ -4,6 +4,7 @@ import RegisterView from '../views/RegisterView.vue'
 import LoginView from '../views/LoginView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import WordCreateView from '../views/WordCreateView.vue'
+import PersonalWordsView from '../views/PersonalWordsView.vue'
 import store from '@/store'
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css'
@@ -18,6 +19,14 @@ const routes: Array<RouteRecordRaw> = [
     path: '/profile',
     name: 'profile',
     component: ProfileView,
+    meta: {
+        requiresAuth: true
+    }
+  },
+  {
+    path: '/words',
+    name: 'words',
+    component: PersonalWordsView,
     meta: {
         requiresAuth: true
     }

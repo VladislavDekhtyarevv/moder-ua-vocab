@@ -1,7 +1,7 @@
 <template>
   <span class="p-input-icon-left">
             <i class="pi pi-search" />
-            <InputText type="text" v-model="search" @input="SetSearch" placeholder="Пошук" />
+            <InputText type="text" v-model="search" v-debounce:400="SetSearch"  placeholder="Пошук" />
         </span>
 </template>
 

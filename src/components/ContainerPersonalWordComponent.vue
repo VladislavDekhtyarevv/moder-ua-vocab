@@ -41,7 +41,7 @@ let infiniteId = ref<number>(Date.now());
 
 function infiniteHandler($state : any) {
 
-  store.dispatch('getWords', {
+  store.dispatch('getPersonalWords', {
     page:page.value,
     sort:sort.value,
     text:text.value,

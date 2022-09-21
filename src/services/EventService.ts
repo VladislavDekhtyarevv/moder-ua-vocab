@@ -18,6 +18,9 @@ export default {
     getWords(params : any) {
         return axios.get(`${process.env.VUE_APP_BASE_URL_API}/words?page=${params.page}&sort=${params.sort}${params.text ?'&text=' + params.text: '' }`, {withCredentials: true})
     },
+    getPersonalWords(params : any) {
+        return axios.get(`${process.env.VUE_APP_BASE_URL_API}/personal-words?page=${params.page}&sort=${params.sort}${params.text ?'&text=' + params.text: '' }`, {withCredentials: true})
+    },
     createWord(params : any) {
         return axios.post(`${process.env.VUE_APP_BASE_URL_API}/words`, params, {withCredentials: true})
     },

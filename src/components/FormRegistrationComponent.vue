@@ -7,7 +7,7 @@
 
 
     <div class="field">
-      <InputText type="email" placeholder="Пошта" v-model="email" :class="validations && validations['email'] ? 'p-invalid' : ''"/>
+      <InputText type="email" placeholder="Електронна адреса" v-model="email" :class="validations && validations['email'] ? 'p-invalid' : ''"/>
       <small v-if="validations && validations['email']" class="p-error">{{validations && validations['email'] ? validations['email'][0] : ''}}</small>
     </div>
 
@@ -48,6 +48,12 @@ function registration () {
         })
   },
   ({errors}: any) => {
+    for (let [key, value] of Object.entries(errors)) {
+      let text = value.toString().replace("name", "ім'я");
+      let text2 = text.toString().replace("email", "електронна адреса");
+      let text3 = text2.toString().replace("password", "пароль");
+      errors[key] = [text3];
+    }
     validations.value = errors;
   })
 }

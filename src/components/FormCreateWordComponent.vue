@@ -35,14 +35,16 @@ function createWord () {
   }
   validations.value = null;
   store.dispatch('createWord', data).then((response) => {
-        console.log(response)
-
-        //пуш на просмотр этого слова
-        // router.push({
-        //   name: 'profile',
-        // })
+        router.push({
+          name: 'words',
+        })
   },
   ({errors}: any) => {
+    for (let [key, value] of Object.entries(errors)) {
+      let text = value.toString().replace("name", "cлово");
+      let text3 = text.toString().replace("description", "тлумачення");
+      errors[key] = [text3];
+    }
     validations.value = errors;
   })
 }

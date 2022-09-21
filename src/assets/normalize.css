@@ -9,7 +9,7 @@
  */
 * {
     box-sizing: border-box;
-    font-family: 'TitilliumWeb', sans-serif;
+    font-family: 'Ruda', sans-serif;
 }
 
 html {
@@ -353,5 +353,5 @@ template {
     display: none;
 }
 * {
-    font-family: 'TitilliumWeb', sans-serif;
+    font-family: 'Ruda', sans-serif;
 }

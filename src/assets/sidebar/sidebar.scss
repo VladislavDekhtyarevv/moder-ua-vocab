@@ -9,6 +9,7 @@
   margin-top: -2rem;
   &__container {
     @include flex-column;
+    align-items: flex-start;
     position: fixed;
     left: 0;
     top: 8rem;

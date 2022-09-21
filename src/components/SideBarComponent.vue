@@ -3,6 +3,7 @@
     <div class="sidebar__container">
         <router-link class="sidebar__item" to="/">Головна</router-link>
         <router-link class="sidebar__item" to="/profile">Профіль</router-link>
+        <router-link class="sidebar__item" to="/words">Мої слова</router-link>
         <router-link class="sidebar__item" to="/word/create">Створити слово</router-link>
     </div>
   </aside>
