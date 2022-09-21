@@ -1,0 +1,54 @@
+
+// Typography
+$font-family: "Inter", sans-serif;
+
+$font-size-h1: 32px;
+$line-height-h1: 150% !important;
+$font-weight-h1: 500;
+
+$font-size-h2: 24px;
+$line-height-h2: 150% !important;
+$font-weight-h2: 500;
+//font-size: $font-size-h2;
+//font-weight :$font-weight-h2;
+//line-height: $line-height-h2;
+
+$font-size-h3: 16px;
+$line-height-h3: 150% !important;
+$font-weight-h3: 500;
+//font-size: $font-size-h3;
+//font-weight :$font-weight-h3;
+
+
+$font-size-main-text-regular: 14px;
+$line-height-main-text-regular: 150% !important;
+$font-weight-main-text-regular: 400;
+//font-size: $font-size-main-text-regular;
+//font-weight :$font-weight-main-text-regular;
+
+$font-size-button-text: 14px;
+$line-height-button-text: 150% !important;
+$font-weight-button-text: 500;
+//font-size: $font-size-button-text;
+//font-weight :$font-weight-button-text;
+
+$font-size-small-text: 12px;
+$line-height-small-text: 150% !important;
+$font-weight-small-text: 400;
+//font-size: $font-size-button-text;
+//font-weight :$font-weight-button-text;
+
+// Colors
+$colorDarkGray: #202020;
+$colorGray: #323232;
+$colorDarkWhite: #FBFBFB;
+$colorBorderGray: #D9D9D9;
+//$colorDisabled: #e0e0e0;
+//$colorBlack: #000000;
+$colorWhite: #ffffff;
+$colorGreen: #9ACA52;
+$colorRed: #E74141;
+$colorGreenGradient: linear-gradient(to right, #86C22B 0%, #B3E36A 51%, #86C22B 100%);
+$colorYellow: #cbc938;
+$colorTransparent: rgba(0, 0, 0, 0);
+

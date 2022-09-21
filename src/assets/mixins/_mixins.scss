@@ -1,0 +1,79 @@
+@import "../global/variables";
+@mixin flex-vertical-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-horizontal-center {
+  display: flex;
+  justify-content: center;
+}
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-full-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-horizontal-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+@mixin background-image {
+  background-size: cover;
+  background-position: center;
+}
+@mixin transition {
+  transition: .4s;
+}
+
+@mixin text-center {
+  text-align: center;
+}
+
+@mixin absolute-full-size {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin text-h1 {
+  font-size: $font-size-h1;
+  font-weight: $font-weight-h1;
+}
+@mixin text-h2 {
+  font-size: $font-size-h2;
+  font-weight: $font-weight-h2;
+}
+@mixin text-h3 {
+  font-size: $font-size-h3;
+  font-weight: $font-weight-h3;
+}
+@mixin text-main-regular {
+  font-size:  $font-size-main-text-regular;
+  font-weight: $font-weight-main-text-regular;
+}
+@mixin text-main-button {
+  font-size:  $font-size-button-text;
+  font-weight: $font-weight-button-text;
+}
+@mixin text-small {
+  font-size:  $font-size-small-text;
+  font-weight: $font-weight-small-text;
+}
+@mixin shadow {
+  box-shadow: 0px 15px 20px rgba(176, 176, 176, 0.25);
+}
