@@ -21,8 +21,14 @@ export default {
     getPersonalWords(params : any) {
         return axios.get(`${process.env.VUE_APP_BASE_URL_API}/personal-words?page=${params.page}&sort=${params.sort}${params.text ?'&text=' + params.text: '' }`, {withCredentials: true})
     },
+    getLikedWords(params : any) {
+        return axios.get(`${process.env.VUE_APP_BASE_URL_API}/liked-words?page=${params.page}&sort=${params.sort}${params.text ?'&text=' + params.text: '' }`, {withCredentials: true})
+    },
     createWord(params : any) {
         return axios.post(`${process.env.VUE_APP_BASE_URL_API}/words`, params, {withCredentials: true})
+    },
+    deleteWord(id : any) {
+        return axios.delete(`${process.env.VUE_APP_BASE_URL_API}/words/${id}`, {withCredentials: true})
     },
     toggleLike(id : number) {
         return axios.post(`${process.env.VUE_APP_BASE_URL_API}/toggle-like`, {id:id}, {withCredentials: true})

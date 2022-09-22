@@ -49,8 +49,30 @@ export default {
             }
         );
     },
+    getLikedWords({ commit } : any, params : any) {
+        return EventService.getLikedWords(params).then(
+            ({ data }: any) => {
+                return data;
+            },
+            (error: any) => {
+                throw error.response.data;
+            }
+        );
+    },
     createWord({ commit } : any, params : any) {
         return EventService.createWord(params).then(
+            ({ data }: any) => {
+                commit("showNotification", data);
+                return data;
+            },
+            (error: any) => {
+                commit("showNotification", error.response.data);
+                throw error.response.data;
+            }
+        );
+    },
+    deleteWord({ commit } : any, id : any) {
+        return EventService.deleteWord(id).then(
             ({ data }: any) => {
                 commit("showNotification", data);
                 return data;

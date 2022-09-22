@@ -13,7 +13,6 @@
           v-for="word in words"
           :key="word.id"
           :word="word"
-          @confirm-delete="deleteWord(word.id)"
       />
       <infinite-loading  :identifier="infiniteId" @infinite="infiniteHandler">
         <template #no-results>Немає результатів</template>
@@ -42,7 +41,7 @@ let infiniteId = ref<number>(Date.now());
 
 function infiniteHandler($state : any) {
 
-  store.dispatch('getPersonalWords', {
+  store.dispatch('getLikedWords', {
     page:page.value,
     sort:sort.value,
     text:text.value,
@@ -69,14 +68,6 @@ function SetSearch(value :any) {
   page.value = 1;
   words.value = [];
   infiniteId.value += 1;
-}
-function deleteWord(id: number) {
-  store.dispatch('deleteWord', id).then(() => {
-    page.value = 1;
-    words.value = [];
-    infiniteId.value += 1;
-  })
-
 }
 
 

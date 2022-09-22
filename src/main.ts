@@ -7,6 +7,7 @@ import { createPinia } from 'pinia'
 import PrimeVue from 'primevue/config';
 import '@/assets/styles.scss'
 import { vue3Debounce } from 'vue-debounce'
+import ConfirmationService from 'primevue/confirmationservice';
 import 'primevue/resources/themes/saga-blue/theme.css'
 import 'primevue/resources/primevue.min.css'
 import 'primeicons/primeicons.css'
@@ -16,6 +17,7 @@ createApp(App)
     .use(store)
     .use(router)
     .use(PrimeVue)
+    .use(ConfirmationService)
     .directive('debounce', vue3Debounce({ lock: true }))
     .use(createPinia())
     .mount('#app')

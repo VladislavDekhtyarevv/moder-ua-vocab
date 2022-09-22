@@ -110,6 +110,15 @@
         <span class="words__single__counter">{{word.likes}}</span>
       </div>
     </span>
+    <span class="p-buttonset" v-if="currentRouteName == 'words'">
+      <div class="words__single__reaction" @click="confirmDelete($event)">
+        <span class="words__single__counter">
+          <i class="pi pi-trash"></i>
+          Видалити слово
+        </span>
+      </div>
+      <ConfirmPopup></ConfirmPopup>
+    </span>
   </div>
 </template>
 
@@ -117,9 +126,12 @@
 import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
 import {ref, computed} from "vue";
-
+import ConfirmPopup from 'primevue/confirmpopup';
+import { useConfirm } from "primevue/useconfirm";
 const router = useRouter()
+const route = useRoute()
 const store = useStore()
+const confirm = useConfirm();
 interface Props {
   word: {
     name: string,
@@ -133,6 +145,8 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+const emit = defineEmits(['ConfirmDelete'])
+
 let word = ref(props.word);
 
 
@@ -150,15 +164,36 @@ function toggle(id: number, action: string) {
         })
   }else {
     store.dispatch('showNotification', {'status': 'error', 'message': 'Щоб оцінити слово потрібно авторизуватися'})
-    //показать нотификацию
   }
 
+}
+function ConfirmDelete() {
+  emit('ConfirmDelete')
+}
+
+const confirmDelete = (event: any) => {
+  confirm.require({
+    target: event.currentTarget,
+    message: 'Ви впевнені, що хочете видалити це слово??',
+    icon: 'pi pi-exclamation-triangle',
+    accept: () => {
+      ConfirmDelete();
+    },
+    reject: () => {
+
+    }
+  });
 }
 
 
 const authUser = computed(() => {
   return store.state.user && store.state.user.token;
 })
+
+const currentRouteName = computed(() => {
+  return route.name;
+})
+
 
 
 
