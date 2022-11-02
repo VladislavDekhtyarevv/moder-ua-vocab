@@ -1,0 +1,77 @@
+@import '../global/variables';
+@import '../mixins/mixins';
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 1rem 2rem;
+  }
+  .mobile {
+    display: flex;
+  }
+  .header__container {
+    position: relative;
+  }
+  .header {
+    &_burger {
+      @include flex-column;
+      cursor: pointer;
+      position: relative;
+      height: 15px;
+      width: 30px;
+      .line {
+        transition: .3s;
+        position: absolute;
+        width: 30px;
+        height: 2px;
+        border-radius: 3px;
+        background-color: $colorYellow;
+        &:nth-child(2) {
+          top:6px;
+        }
+        &:first-child {
+          top:0;
+        }
+        &:last-child {
+          top:12px;
+        }
+      }
+      &.active {
+        .line {
+          &:nth-child(2) {
+            opacity: 0;
+          }
+          &:first-child {
+            top: 6px;
+            transform: rotate(45deg);
+          }
+          &:last-child {
+            top: 6px;
+            transform: rotate(-45deg);
+          }
+        }
+      }
+    }
+    &__menu {
+      @include flex-column;
+      transition: .3s;
+      position: absolute;
+      height: 0;
+      min-width: 200px;
+      opacity: 0;
+      z-index: -1;
+      top: 2rem;
+      right: 0;
+      padding: 1rem;
+      background-color: $colorBlockBlue;
+      border-radius: 5px;
+      border: 3px solid $colorYellow;
+      .header__item {
+        margin-bottom: 1rem;
+      }
+      &.active {
+        height: auto;
+        opacity: 1;
+        z-index: 2;
+      }
+    }
+  }
+}

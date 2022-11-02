@@ -70,6 +70,10 @@ a:hover::before{
   width: 100%;
 }
 
+.mobile {
+  display: none;
+}
+
 .router-link-active {
     background-position: 0;
   &::before{

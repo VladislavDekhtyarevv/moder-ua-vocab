@@ -7,4 +7,5 @@ export default {
     notification: {
         data: {}
     },
+    header: false,
 }
